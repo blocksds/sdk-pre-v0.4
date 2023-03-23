@@ -11,4 +11,4 @@ GAME_TITLE	:= Cooperative multithreading
 
 SOURCEDIRS	:= source
 
-include ../../tests/Makefile.include
+include ../../../tests/Makefile.include

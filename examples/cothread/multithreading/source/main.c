@@ -61,6 +61,8 @@ int main(int argc, char **argv)
 
     while (1)
     {
+        cothread_yield_irq(IRQ_VBLANK);
+
         bool any_thread_running = false;
 
         for (int i = 0; i < NUM_CORO; i++)
@@ -88,17 +90,13 @@ int main(int argc, char **argv)
 
         if (any_thread_running == false)
             break;
-
-        cothread_yield();
     }
 
     printf("\x1b[18;0HPress START to exit to loader\n");
 
     while (1)
     {
-        swiWaitForVBlank();
-
-        cothread_yield();
+        cothread_yield_irq(IRQ_VBLANK);
 
         scanKeys();
 

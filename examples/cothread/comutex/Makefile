@@ -11,4 +11,4 @@ GAME_TITLE	:= Comutex example
 
 SOURCEDIRS	:= source
 
-include ../Makefile.include
+include ../../../tests/Makefile.include

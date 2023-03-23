@@ -55,12 +55,12 @@ int main(int argc, char **argv)
 
     while (1)
     {
+        cothread_yield_irq(IRQ_VBLANK);
+
         printf("\x1b[0;0H");
         printf("Count:          %10d\n", count);
         printf("Total produced: %10d\n", total_produced);
         printf("Total consumed: %10d\n", total_consumed);
-
-        cothread_yield();
 
         scanKeys();
 

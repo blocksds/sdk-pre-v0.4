@@ -137,6 +137,8 @@ int main(int argc, char **argv)
     int count = 0;
     while (1)
     {
+        cothread_yield_irq(IRQ_VBLANK);
+
         consoleSelect(&bottomScreen);
         printf("\x1b[10;14;H%5d", count);
         fflush(stdout);
@@ -148,8 +150,6 @@ int main(int argc, char **argv)
             cothread_delete(load_thread);
             break;
         }
-
-        cothread_yield();
     }
 
 wait_loop:
@@ -159,7 +159,7 @@ wait_loop:
 
     while (1)
     {
-        swiWaitForVBlank();
+        cothread_yield_irq(IRQ_VBLANK);
 
         scanKeys();
 

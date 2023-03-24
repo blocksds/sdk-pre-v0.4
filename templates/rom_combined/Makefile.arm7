@@ -105,6 +105,7 @@ CXXFLAGS	+= -std=gnu++14 $(WARNFLAGS) $(DEFINES) $(ARCH) \
 LDFLAGS		:= -mthumb -mthumb-interwork $(LIBDIRSFLAGS) \
 		   -Wl,-Map,$(MAP) -Wl,--gc-sections -nostdlib \
 		   -T$(BLOCKSDS)/sys/crts/ds_arm7.ld \
+		   -Wl,--no-warn-rwx-segments \
 		   -Wl,--start-group $(LIBS) -lgcc -Wl,--end-group
 
 # Intermediate build files
